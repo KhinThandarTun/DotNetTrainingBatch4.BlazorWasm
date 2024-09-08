@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetBlogs() 
+        public IActionResult GetBlogs()
         {
             var list = _context.Blogs.ToList();
             return Ok(list);
@@ -32,10 +32,25 @@ namespace WebAPI.Controllers
             return Ok(message);
         }
 
-        [HttpPut]
-        public IActionResult UpdateBlog()
+        [HttpPut("{id}")]
+        public IActionResult UpdateBlog(int id, Blog model)
         {
-            return Ok();
+            var item = _context.Blogs.FirstOrDefault(b => b.BlogId == id);
+
+            if(item is null)
+            {
+                return BadRequest("No data found");
+            }
+
+            item.BlogTitle = model.BlogTitle;
+            item.BlogAuthor = model.BlogAuthor;
+            item.BlogContent = model.BlogContent;
+
+            var result = _context.SaveChanges();
+
+            string message = result > 0 ? "Update Successful!" : "Update Failed!";
+
+            return Ok(message);
         }
 
         [HttpDelete]
