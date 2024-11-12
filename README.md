@@ -7,7 +7,7 @@ dotnet ef dbcontext scaffold --project <ProjectName> "Server=.;Database=PointOfS
 
 Clean Architecture Database Migration
 
-dotnet ef migrations add InitialCreate --project <ProjectName> --output-dir Migrations --context ApplicationDbContext 
+command dotnet ef migrations add InitialCreate --project <ProjectName> --output-dir Migrations --context ApplicationDbContext 
 
 dotnet ef database update InitialCreate --project <ProjectName> --context ApplicationDbContext --connection "Server=.;Database=DeliCommerce;Trusted_Connection=True;TrustServerCertificate=true;" 
 
