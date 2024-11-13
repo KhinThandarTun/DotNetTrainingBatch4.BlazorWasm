@@ -4,6 +4,7 @@ Commands to scaffold
 
 ASP.NET Core Web API Migrations
 
+bash
 dotnet ef dbcontext scaffold --project <ProjectName> "Server=.;Database=PointOfSale;User ID=sa;Password=123;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -c AppDbContext -f
 
 Clean Architecture Database Migration
